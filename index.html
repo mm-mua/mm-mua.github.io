@@ -64,13 +64,18 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="source.html" class="nav-link">
+                <a href="/source.html" class="nav-link">
                     Source
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#contact" class="nav-link">
-                    Contact
+                <a id="tempdown" class="nav-link">
+                    Downloads
+                </a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link">
+                    Wait and See
                 </a>
             </li>
         </ul>
@@ -595,63 +600,18 @@ Hello World的起源要追溯到1972年，贝尔实验室著名研究员Brian Ke
             // 添加点击事件监听器
             navItem.addEventListener("click", function() {
             // 重定向到目标页面的URL
-            window.location.href = "blog/index.html";
+            window.location.href = "blog";
             });
 
-            /****************** Gallery *****************
+            // 获取nav-item元素
+            var navItem = document.getElementById("tempdown");
 
-            const galleryItems = document.querySelector(".tm-gallery").children;
-            const itemsPerPage = 10;
-            const totalPages = Math.ceil(galleryItems.length / itemsPerPage);
-            const pageAttribute = 'data-page';
+            // 添加点击事件监听器
+            navItem.addEventListener("click", function() {
+            // 重定向到目标页面的URL
+            window.location.href = "download/index.html";
+            });
 
-            function setPagination(currentPage) {
-                for(let i = 1; i <= totalPages; i++) {
-                    var $pager = '';
-                    
-                    if(currentPage == i) {
-                        $pager = $('<a href="javascript:void(0);" class="active tm-paging-link" '+pageAttribute+'="'+i+'"></a>');
-                    } else {
-                        $pager = $('<a href="javascript:void(0);" class="tm-paging-link" '+pageAttribute+'="'+i+'"></a>');
-                    }
-
-                    $pager.html(i);
-
-                    $pager.click(function(){ 
-                        $('.tm-paging-link').removeClass("active");
-                        $(this).addClass('active');
-                        var page = $(this).eq(0).attr(pageAttribute);
-                        showItems(page);
-                    });
-
-                    $pager.appendTo($('.tm-paging'));
-                }
-            }
-
-            function showItems(currentPage) {
-                for(let i = 0; i < galleryItems.length; i++) {
-                    galleryItems[i].classList.remove("show");
-                    galleryItems[i].classList.add("hide");
-
-                    if(i >= (currentPage * itemsPerPage) - itemsPerPage && i < currentPage * itemsPerPage) {
-                        galleryItems[i].classList.remove("hide");
-                        galleryItems[i].classList.add("show");
-                    }
-                }
-            }
-
-            setPagination(1);
-            showItems(1);
-            
-            /****************** Magnific Popup **********
-
-            $('.tm-gallery').magnificPopup({
-                delegate: 'a',
-                type: 'image',
-                gallery: {
-                    enabled: true
-                }
-            });*/
         });
     </script>
 </body>
